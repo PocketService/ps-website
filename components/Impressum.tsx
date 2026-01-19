@@ -23,7 +23,7 @@ export default function Impressum() {
         {isOpen && (
           <div className="text-xs space-y-2 mt-4 leading-relaxed">
             <div>
-              <p className="font-bold">Vialndawo e.U.</p>
+              <p className="font-bold">Pocket Service Digital e.U.</p>
               <p>Konstantin Michalek</p>
             </div>
 
