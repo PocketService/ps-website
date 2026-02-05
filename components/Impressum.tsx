@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Impressum() {
@@ -49,6 +50,10 @@ export default function Impressum() {
 
             <div>
               <p><strong>Aufsichtsbehörde/Gewerbebehörde:</strong> Bezirkshauptmannschaft Tulln – Außenstelle Klosterneuburg | <strong>Verleihungsstaat:</strong> Österreich</p>
+            </div>
+
+            <div>
+              <p>Weitere Informationen zum Datenschutz finden Sie in unserer <Link href="/datenschutz" className="underline hover:no-underline">Datenschutzerklärung</Link>.</p>
             </div>
           </div>
         )}

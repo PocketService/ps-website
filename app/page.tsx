@@ -1,118 +1,171 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Modal from '@/components/Modal'
-import Ballpit from '@/components/Ballpit'
+import Link from 'next/link'
+import SectionNav from '@/components/SectionNav'
+
+const WAS_WIR_TUN = [
+  {
+    id: '01',
+    title: 'Digitale Grundlagen',
+    description:
+      'Wir analysieren bestehende IT-Strukturen und schaffen eine stabile, nachvollziehbare Basis. Dazu gehören klare Konzepte für Systeme, Daten, Zugriffe und Sicherheit sowie eine verständliche Dokumentation.',
+  },
+  {
+    id: '02',
+    title: 'Prozesse & Digitalisierung',
+    description:
+      'Wir betrachten bestehende Arbeitsabläufe, identifizieren Reibungspunkte und vereinfachen Prozesse durch passende digitale Werkzeuge. Ziel ist nicht mehr Software, sondern klarere Abläufe und weniger Doppelarbeit.',
+  },
+  {
+    id: '03',
+    title: 'Daten & Auswertungen',
+    description:
+      'Wir strukturieren und bereiten Daten so auf, dass sie verlässlich genutzt werden können. Durch klare Auswertungen und übersichtliche Dashboards entstehen belastbare Entscheidungsgrundlagen.',
+  },
+] as const
+
+const WIE_WIR_ARBEITEN = [
+  'Analyse vor Umsetzung',
+  'Transparente Entscheidungen',
+  'Verständliche Lösungen statt Fachjargon',
+] as const
 
 export default function Home() {
-  const [ballCount, setBallCount] = useState(400)
-  const [isImpressumOpen, setIsImpressumOpen] = useState(false)
-
-  useEffect(() => {
-    const updateBallCount = () => {
-      const width = window.innerWidth
-      if (width < 768) {
-        // Mobile
-        setBallCount(160)
-      } else if (width < 1024) {
-        // Tablet
-        setBallCount(222)
-      } else {
-        // Desktop
-        setBallCount(330)
-      }
-    }
-
-    updateBallCount()
-    window.addEventListener('resize', updateBallCount)
-    return () => window.removeEventListener('resize', updateBallCount)
-  }, [])
-
   return (
-    <main className="min-h-screen flex flex-col">
-      {/* Impressum Button */}
-      <button
-        onClick={() => setIsImpressumOpen(true)}
-        className="fixed top-4 right-4 z-50 px-4 py-2 bg-white border-2 border-black text-black text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-colors focus-ring"
-        style={{ boxShadow: '4px 4px 0px var(--fg)' }}
-        aria-label="Impressum öffnen"
-      >
-        Impressum
-      </button>
+    <main className="min-h-screen">
+      <SectionNav />
 
-      {/* Impressum Modal */}
-      <Modal
-        isOpen={isImpressumOpen}
-        onClose={() => setIsImpressumOpen(false)}
-        title="Impressum"
-      >
-        <div className="text-sm space-y-4 leading-relaxed">
-          <div>
-            <p className="font-bold">Pocket Service Digital e.U.</p>
-            <p>Konstantin Michalek</p>
+      <div className="pt-14 md:pt-0 md:pl-16">
+        {/* 1. Wer wir sind */}
+        <section
+          id="hero"
+          className="min-h-[80vh] border-b-2 border-black px-4 py-16 md:px-8 md:py-24"
+        >
+          <div className="mx-auto max-w-4xl">
+            <span className="mb-6 inline-block bg-black px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+              {'/// POCKET SERVICE DIGITAL'}
+            </span>
+            <h1 className="text-heading mb-6">Wer wir sind</h1>
+            <div className="flex gap-4">
+              <div className="w-1 shrink-0 bg-black" />
+              <div>
+                <p className="text-body mb-4 max-w-2xl">
+                  Pocket Service Digital unterstützt kleine und mittlere Unternehmen ohne eigene IT-Abteilung dabei, ihre digitalen Strukturen verständlich, zuverlässig und nachhaltig aufzubauen.
+                </p>
+                <p className="text-body mb-4 max-w-2xl">
+                  Wir schaffen Ordnung in IT, Prozessen und Daten – ohne unnötige Komplexität.
+                </p>
+            
+                <p className="text-subheading">Keep IT simple.</p>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div>
-            <p>Klosterneuburger Gasse, 62,</p>
-            <p>3400 Klosterneuburg, Österreich</p>
+        {/* 2. Was wir tun */}
+        <section
+          id="leistungen"
+          className="border-b-2 border-black px-4 py-16 md:px-8 md:py-24"
+        >
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-heading mb-2">Was wir tun</h2>
+            <div className="mb-12 h-1 w-full bg-black" />
+            <div className="space-y-0">
+              {WAS_WIR_TUN.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`flex gap-6 border-l-4 border-black pl-6 ${
+                    index < WAS_WIR_TUN.length - 1 ? 'pb-10' : ''
+                  }`}
+                >
+                  <span className="text-xs font-bold uppercase tracking-wider text-muted">
+                    [{item.id}]
+                  </span>
+                  <div>
+                    <h3 className="text-subheading mb-1">{item.title}</h3>
+                    <p className="text-body">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+        </section>
 
-          <div>
-            <p><strong>Unternehmensgegenstand:</strong> Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik</p>
-            <p><strong>UID-Nummer:</strong> ATU76469304 | <strong>GISA-Zahl:</strong> 38750779</p>
-            <p><strong>Firmenbuchnummer:</strong> FN 550448 h | <strong>Firmenbuchgericht:</strong> Bezirksgericht Korneuburg</p>
-            <p><strong>Firmensitz:</strong> 3400 Klosterneuburg</p>
+        {/* 3. Wie wir arbeiten */}
+        <section
+          id="philosophie"
+          className="border-b-2 border-black px-4 py-16 md:px-8 md:py-24"
+        >
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-heading mb-2">Wie wir arbeiten</h2>
+            <div className="mb-6 h-1 w-full bg-black" />
+            <p className="text-body mb-6 max-w-2xl">
+              Wir arbeiten so eng mit unseren Kund:innen zusammen, wie es ihre Ressourcen erlauben.
+            </p>
+            <p className="text-body mb-8 max-w-2xl">
+              Wo sinnvoll, binden wir Teams aktiv ein und übergeben Prozesse bewusst in die Hände der Kund:innen.
+            </p>
+            <ul className="mb-8 space-y-3">
+              {WIE_WIR_ARBEITEN.map((item) => (
+                <li key={item} className="flex gap-4">
+                  <span className="text-body">•</span>
+                  <span className="text-body">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-body max-w-2xl">
+              So entstehen Lösungen, die langfristig nutzbar und kosteneffizient sind – ohne unnötige Abhängigkeiten.
+            </p>
           </div>
+        </section>
 
-          <div>
-            <p><strong>E-Mail:</strong> <a href="mailto:mail@pocket-service.com" className="underline hover:no-underline">mail@pocket-service.com</a></p>
+        {/* 4. Kontakt */}
+        <section
+          id="kontakt"
+          className="border-b-2 border-black px-4 py-16 md:px-8 md:py-24"
+        >
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-heading mb-2">Kontakt</h2>
+            <div className="mb-6 h-1 w-full bg-black" />
+            <p className="text-body mb-4 max-w-2xl">
+              Sie sind unsicher, wo Sie mit einem IT- oder Digitalthema anfangen sollen?
+              Oft reicht ein kurzes Gespräch, um Klarheit zu schaffen.
+            </p>
+            <p className="text-body mb-6 max-w-2xl">
+              Die ersten Beratungsgespräche sind kostenlos und unverbindlich.
+              Eine kurze E-Mail mit ein paar Stichworten genügt.
+            </p>
+            <p className="text-body mb-6 font-bold">
+              Interesse an einem kurzen Erstgespräch?
+            </p>
+            <div className="border-2 border-black p-6">
+              <p className="text-xs font-bold uppercase tracking-wider text-muted">
+                {'/// POCKET SERVICE DIGITAL'}
+              </p>
+              <a
+                href="mailto:mail@pocket-service.com"
+                className="mt-4 block text-body font-bold underline hover:no-underline"
+              >
+                mail@pocket-service.com
+              </a>
+            </div>
           </div>
+        </section>
 
-          <div>
-            <p><strong>Berufsrecht:</strong> Gewerbeordnung: <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">www.ris.bka.gv.at</a></p>
-          </div>
-
-          <div>
-            <p><strong>Aufsichtsbehörde/Gewerbebehörde:</strong> Bezirkshauptmannschaft Tulln – Außenstelle Klosterneuburg | <strong>Verleihungsstaat:</strong> Österreich</p>
-          </div>
-        </div>
-      </Modal>
-
-      {/* Ballpit Background */}
-      <div style={{position: 'relative', overflow: 'hidden', flex: '1', height: '100vh', minHeight: '100vh', width: '100%'}}>
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 0,
-          fontSize: 'clamp(3rem, 8vw, 8rem)',
-          fontWeight: 900,
-          textTransform: 'uppercase',
-          letterSpacing: '-0.05em',
-          color: 'var(--fg)',
-          pointerEvents: 'none',
-          textAlign: 'center',
-        }}>
-          Work in Progress
-        </div>
-        <div style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, width: '100%', height: '100%'}}>
-          <Ballpit
-            count={ballCount}
-            gravity={0.0}
-            friction={1}
-            wallBounce={1}
-            followCursor={false}
-            colors={[
-              0xE40303, // Rot 
-              0xFF8C00, // Orange 
-              0xFFED00, // Gelb 
-              0x008026, // Grün 
-              0x24408E, // Blau 
-              0x732982  // Violett 
-            ]}
-          />
-        </div>
+        <footer className="border-t-2 border-black px-4 py-6 text-center">
+          <p className="text-small text-muted">
+            © {new Date().getFullYear()} Pocket Service // keep IT simple
+          </p>
+          <p className="mt-2 text-small">
+            <Link href="/impressum" className="underline hover:no-underline">
+              Impressum
+            </Link>
+            {' · '}
+            <Link href="/datenschutz" className="underline hover:no-underline">
+              Datenschutz
+            </Link>
+          </p>
+        </footer>
       </div>
     </main>
   )

@@ -1,24 +1,24 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Space_Mono } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceMono = Space_Mono({ weight: ['400', '700'], subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Pocket Service – Digitalisierung für Kleinbetriebe',
-  description: 'Windows-Verwaltung, Cloud-Einrichtung, CRM/PM-Implementierung & laufende Betreuung.',
-  keywords: 'Digitalisierung, Kleinbetriebe, Windows-Verwaltung, Cloud, CRM, Projektmanagement',
+  title: 'Pocket Service – Digitalisierung für KMU',
+  description: 'Von Excel zu Datenbanken. IT-Dienstleistungen für kleine und mittelständische Unternehmen.',
+  keywords: 'Digitalisierung, KMU, Datenbanken, Cloud, CRM, Prozessautomatisierung',
   authors: [{ name: 'Pocket Service' }],
   creator: 'Pocket Service',
-  publisher: 'Vialndawo e.U.',
+  publisher: 'Pocket Service Digital e.U.',
   robots: 'index, follow',
   openGraph: {
     type: 'website',
     locale: 'de_AT',
     url: 'https://pocket-service.com',
     siteName: 'pocket-service.com',
-    title: 'Pocket Service – Digitalisierung für Kleinbetriebe',
-    description: 'Windows-Verwaltung, Cloud-Einrichtung, CRM/PM-Implementierung & laufende Betreuung.',
+    title: 'Pocket Service – Digitalisierung für KMU',
+    description: 'Von Excel zu Datenbanken. IT-Dienstleistungen für kleine und mittelständische Unternehmen.',
     images: [
       {
         url: '/og-image.jpg',
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pocket Service – Digitalisierung für Kleinbetriebe',
-    description: 'Windows-Verwaltung, Cloud-Einrichtung, CRM/PM-Implementierung & laufende Betreuung.',
+    title: 'Pocket Service – Digitalisierung für KMU',
+    description: 'Von Excel zu Datenbanken. IT-Dienstleistungen für kleine und mittelständische Unternehmen.',
     images: ['/og-image.jpg'],
   },
   alternates: {
@@ -56,7 +56,7 @@ const jsonLd = {
     '@type': 'Person',
     name: 'Konstantin Michalek',
   },
-  description: 'Digitalisierung für Kleinbetriebe - Windows-Verwaltung, Cloud-Einrichtung, CRM/PM-Implementierung & laufende Betreuung.',
+  description: 'Von Excel zu Datenbanken. IT-Dienstleistungen für kleine und mittelständische Unternehmen.',
 }
 
 export default function RootLayout({
@@ -72,7 +72,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${spaceMono.className} antialiased`}>
         {children}
       </body>
     </html>

@@ -1,5 +1,5 @@
 export const companyData = {
-  name: 'Vialndawo e.U.',
+  name: 'Pocket Service Digital e.U.',
   owner: 'Konstantin Michalek',
   address: {
     street: 'Klosterneuburger Gasse 62',
@@ -8,7 +8,7 @@ export const companyData = {
   },
   business: {
     uid: 'ATU76469304',
-    gisa: '33568898',
+    gisa: '38750779',
     companyRegister: 'FN 550448 h',
     court: 'Bezirksgericht Korneuburg',
     headquarters: '3400 Klosterneuburg',
