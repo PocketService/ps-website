@@ -138,17 +138,17 @@ export default function Home() {
             <p className="text-body mb-6 font-bold">
               Interesse an einem kurzen Erstgespräch?
             </p>
-            <div className="border-2 border-black p-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-muted">
-                {'/// POCKET SERVICE DIGITAL'}
-              </p>
-              <a
-                href="mailto:mail@pocket-service.com"
-                className="mt-4 block text-body font-bold underline hover:no-underline"
-              >
+            <a
+              href="mailto:mail@pocket-service.com"
+              className="group inline-flex flex-col gap-2 border-4 border-black bg-white px-8 py-6 shadow-[8px_8px_0px_0px_#000] transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_#000] focus-ring"
+            >
+              <span className="text-xs font-bold uppercase tracking-wider text-muted">
+                {'/// POCKET SERVICE'}
+              </span>
+              <span className="text-lg font-bold md:text-xl group-hover:underline">
                 mail@pocket-service.com
-              </a>
-            </div>
+              </span>
+            </a>
           </div>
         </section>
 
