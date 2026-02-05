@@ -42,8 +42,8 @@ export default function Home() {
           className="min-h-[80vh] border-b-2 border-black px-4 py-16 md:px-8 md:py-24"
         >
           <div className="mx-auto max-w-4xl">
-            <span className="mb-6 inline-block bg-black px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-              {'/// POCKET SERVICE DIGITAL'}
+            <span className="mb-6 inline-block bg-black px-4 py-2 text-base font-bold uppercase tracking-wider text-white md:text-lg">
+              {'/// POCKET SERVICE'}
             </span>
             <h1 className="text-heading mb-6">Wer wir sind</h1>
             <div className="flex gap-4">
