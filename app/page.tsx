@@ -48,7 +48,7 @@ export default function Home() {
       >
         <div className="text-sm space-y-4 leading-relaxed">
           <div>
-            <p className="font-bold">Vialndawo e.U.</p>
+            <p className="font-bold">Pocket Service Digital e.U.</p>
             <p>Konstantin Michalek</p>
           </div>
 
